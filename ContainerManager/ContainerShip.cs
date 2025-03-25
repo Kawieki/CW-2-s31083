@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace ContainerManager;
 
 public class ContainerShip(double speed, double maxContainers, double maxLoad)
@@ -45,7 +47,7 @@ public class ContainerShip(double speed, double maxContainers, double maxLoad)
                 if (CheckContainerCapacity(container))
                 {
                     _containers[i] = container;
-                    Console.WriteLine("Replaced container with serial number {0}.", _containers[i].SerialNumber);
+                    Console.WriteLine("Replaced container {1} with container: {0}", _containers[i].SerialNumber, serialNumber);
                     return;
                 }
                 Console.WriteLine("Error: Container is full");
@@ -75,4 +77,14 @@ public class ContainerShip(double speed, double maxContainers, double maxLoad)
 
     }
     
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.AppendLine($"ContainerShip: Speed={_speed}, MaxContainers={_maxContainers}, MaxLoad={_maxLoad}, CurrentContainers={_containers.Count}");
+        foreach (var container in _containers)
+        {
+            sb.AppendLine(container.ToString());
+        }
+        return sb.ToString();
+    }
 }

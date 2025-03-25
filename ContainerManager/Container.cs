@@ -30,30 +30,24 @@ public abstract class Container
         
         if (weight > MaxLoad || CargoWeight+weight > MaxLoad)
         {
-            throw new OverfillExepction("The weight is too large for this container.");
+            throw new OverfillException("The weight is too large for this container.");
         }
         CargoWeight+=weight;
     }
 
-    public virtual Product DeloadContainer()
+    public virtual Product UnloadContainer()
     {
-        Product deloadProduct = new Product(product);
-        deloadProduct.Weight = CargoWeight;
+        Product unloadProduct = new Product(product);
+        unloadProduct.Weight = CargoWeight;
         product = null;
         CargoWeight = 0;
-        return deloadProduct;
+        return unloadProduct;
     }
 
     public override string ToString()
     {
-        return $"Container: {SerialNumber}\n" +
-               $"Cargo Weight: {CargoWeight}\n" +
-               $"Height: {Height}\n" +
-               $"Container Weight: {ContainerWeight}\n" +
-               $"Depth: {Depth}\n" +
-               $"Product Type: {product.Type[0]}\n" +
-               $"Max Load: {MaxLoad}";
+        return $"Container[{SerialNumber}], Cargo Weight: {CargoWeight}, Height: {Height}, Container Weight: {ContainerWeight}, Depth: {Depth}, Product Type: {product?.Type}, Product Name: {product?.Name}, Max Load: {MaxLoad}";
     }
 }
 
-public class OverfillExepction(string message) : Exception(message);
+public class OverfillException(string message) : Exception(message);

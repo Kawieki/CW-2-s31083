@@ -10,7 +10,7 @@ public class LiquidContainer : Container, IHazardNotifier
 
     public void Notify(string message)
     {
-        Console.WriteLine($"Warning! Dangerous liquid activity detected in container {SerialNumber}: {message}");
+        Console.WriteLine($"Warning! Dangerous activity detected in container {SerialNumber}: {message}");
     }
 
     public override void LoadProducts(Product product, double weight)
@@ -18,7 +18,7 @@ public class LiquidContainer : Container, IHazardNotifier
         
         if ((product.Hazardous && CargoWeight + weight > MaxLoad*0.5) || CargoWeight + weight > MaxLoad*0.9)
         {
-            Console.WriteLine("Warning! This operation is dangerous, please reconsider adding lower weight.");
+          Notify("This operation is not safe for this product weight.");
         }
         else
         {

@@ -11,16 +11,16 @@ public class GasContainer: Container, IHazardNotifier
     }
     public void Notify(string message)
     {
-        Console.WriteLine($"Warning! Dangerous gas activity detected in container {SerialNumber}: {message}");
+        Console.WriteLine($"Warning! Dangerous activity detected in container {SerialNumber}: {message}");
     }
     
-    public override Product DeloadContainer()
+    public override Product UnloadContainer()
     {
-        Product deloadProduct = new Product(product);
-        deloadProduct.Weight = CargoWeight*0.95;
+        Product unloadedProduct = new Product(product);
+        unloadedProduct.Weight = CargoWeight*0.95;
         product = null;
         CargoWeight *= 0.05;
-        return deloadProduct;
+        return unloadedProduct;
     }
     
 }

@@ -2,7 +2,7 @@ namespace ContainerManager;
 
 public class ContainerRefrigerated: Container
 {
-    public double temperature {get; set;}
+    public double Temperature {get; set;}
     private Dictionary<string, double> _productTemperatures = new()
     {
         { "Bananas", 13.3 },
@@ -22,10 +22,12 @@ public class ContainerRefrigerated: Container
     {
         if (temperature < _productTemperatures[product.Name])
         {
-            Console.WriteLine($"The temperature of container is lower than requierd temperature for: {product.Name}. \n " +
-                              $"Try increasing the temperature to atleast: {_productTemperatures[product.Name]}");
+            Temperature = _productTemperatures[product.Name];
         }
-        
+        else
+        {
+            Temperature = temperature;
+        }
     }
     
 }
