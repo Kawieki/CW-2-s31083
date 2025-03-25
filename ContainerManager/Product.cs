@@ -1,8 +1,11 @@
 namespace ContainerManager;
 
-public class Product(string name, string type, double temperature)
+public class Product(string name, string type, bool hazardous)
 {
-    private string _name = name;
-    private string _type = type;
-    private double _temperature = temperature;
+    public string Name { get; init; } = name;
+    public string Type { get; init; } = type;
+    public bool Hazardous { get; init; } = hazardous;
+    public double Weight { get; set; }
+
+    public Product(Product other) : this(other.Name, other.Type, other.Hazardous) { }
 }
