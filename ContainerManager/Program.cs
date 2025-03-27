@@ -9,6 +9,7 @@ class Program
         Product oil = new Product("Oil", "L", true);
         Product helium = new Product("Helium", "G", false);
         Product bananas = new Product("Bananas", "C", false);
+        Product pysznyJabol = new Product("Pyszny jabol", "L", false);
 
         // Stworzenie kontenerów
         Container liquidContainer = new LiquidContainer(5000, 400, 1000, 420, milk);
@@ -47,8 +48,8 @@ class Program
         Console.WriteLine(ship1);
 
         // Zastąpienie kontenera na statku
-        Container newLiquidContainer = new LiquidContainer(5000, 400, 1000, 420, milk);
-        newLiquidContainer.LoadProducts(milk, 4000);
+        Container newLiquidContainer = new LiquidContainer(7000, 400, 1000, 420, pysznyJabol);
+        newLiquidContainer.LoadProducts(pysznyJabol, 2137);
         ship1.ReplaceContainer(liquidContainer.SerialNumber, newLiquidContainer);
         Console.WriteLine("Statek 1 po zastąpieniu kontenera:");
         Console.WriteLine(ship1);
