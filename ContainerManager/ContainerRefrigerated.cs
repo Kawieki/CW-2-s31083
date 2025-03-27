@@ -20,6 +20,11 @@ public class ContainerRefrigerated: Container
     
     public ContainerRefrigerated(double maxLoad, double height, double containerWeight, double depth, double temperature, Product product) : base(maxLoad, height, containerWeight, depth, product)
     {
+        if (!_productTemperatures.ContainsKey(product.Name))
+        {
+            throw new ArgumentException("Product does not exist");
+        }
+        
         if (temperature < _productTemperatures[product.Name])
         {
             Temperature = _productTemperatures[product.Name];
